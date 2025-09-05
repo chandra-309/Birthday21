@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ucapan Ulang Tahun</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <!-- Tombol Logout -->
+    <a href="/logout" class="logout-btn">Keluar</a>
+
+    <!-- Container utama -->
+    <div class="container">
+        <div class="page" id="page-1">
+            <h1>🎉 Selamat Ulang Tahun ke-21 adekk sayangg❤️! 🎂</h1>
+            <p>Hari ini adalah hari spesial mu sayang❤️ . Nadia Ayu Zanty Zheviana Putri Semoga penuh dengan cinta, kebahagiaan yang tiada habisnya❤️!</p>
+            <button onclick="nextPage(2)">Lanjut yaww sayang❤️</button>
+        </div>
+        <div class="page" id="page-2" style="display: none;">
+            <h1>Manisnya Mas❤️</h1>
+            <img src="/bd.jpg" alt="Foto Kenangan" class="photo">
+            <p>Semoga setiap momen indah selalu menjadi bagian dari hidup adek sayang❤️❤️!</p>
+            <button onclick="nextPage(3)">Lanjut lagii sayangg❤️</button>
+        </div>
+        <div class="page" id="page-3" style="display: none;">
+            <h1>Happy Birthday sayangku❤️</h1>
+            <p>
+                ❤️Sayangku, selamat ulang tahun ke 21 yaa muahhhhhhhh! Aku merasa begitu beruntung memiliki seseorang sepertimu dalam hidupku. 
+                Semoga semua impianmu tercapai, dan aku akan selalu ada untuk membuatmu hari hari kita tersenyum, 
+                hari ini dan selamanya. Aku cinta kamu selamanya! ❤️
+               <br>
+               ❤️Thank you my dear, I am truly lucky to be a part of your life, and I thank you for fighting together for our relationship to reach our true goal,
+                we will try to have a harmonious relationship, dear, I hope you are always happy and always strong To survive this life's obstacles,
+                I'm there for you darling, I try to always be there when you need me, for support, to express what's in your heart, and once again, 
+                I love you and will always be like this my love, I'm very lucky to have you who is so perfect in my eyes, love you more darling❤️❤️❤️!
+            </p>
+            <button onclick="nextPage(4)">satuu lagii cintakuu❤️</button>
+        </div>
+        <div class="page" id="page-4" style="display: none;">
+            <h1>Doa mas untuk adek tersayang❤️</h1>
+            <p>Mas harap adek selalu sehat,bahagia, tidak introvert lagii, lancar untuk segala urusanya, dan selalu semangatt di setiap harinya, dan kita selalu sama" langgeng sampai kapanpun, lovee uu sayang ❤️❤️</p>
+            <button onclick="nextPage(1)">maaciww sayang, kembali kedepan lagii yaww❤️</button>
+        </div>
+    </div>
+
+    <!-- Animasi cinta -->
+    <div class="love-container"></div>
+    <!-- Kelopak bunga jatuh -->
+    <div class="petals-container"></div>
+
+    <!-- Audio Background -->
+    <audio id="bg-music" autoplay loop>
+        <source src="/static/backsound.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung audio tag.
+    </audio>
+
+    <script>
+        // Fungsi navigasi halaman
+        function nextPage(pageNumber) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.style.display = 'none');
+            document.getElementById(`page-${pageNumber}`).style.display = 'block';
+        }
+
+        // Fungsi membuat animasi hati
+        function createHeart() {
+            const loveContainer = document.querySelector('.love-container');
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+            loveContainer.appendChild(heart);
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+        setInterval(createHeart, 450);
+
+        // Kelopak bunga jatuh
+        function createPetal() {
+            const container = document.querySelector('.petals-container');
+            const petal = document.createElement('div');
+            petal.className = 'petal';
+            if (Math.random() < 0.3) petal.classList.add('tiny');
+            if (Math.random() > 0.7) petal.classList.add('big');
+            petal.style.left = Math.random() * 100 + 'vw';
+            const fallDuration = (Math.random() * 6 + 6).toFixed(1) + 's';
+            const swayDuration = (Math.random() * 3 + 3).toFixed(1) + 's';
+            petal.style.animationDuration = fallDuration + ', ' + swayDuration;
+            container.appendChild(petal);
+            setTimeout(() => petal.remove(), 12000);
+        }
+        setInterval(createPetal, 550);
+    </script>
+</body>
+</html>
